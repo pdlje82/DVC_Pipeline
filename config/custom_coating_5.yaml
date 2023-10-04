@@ -1,0 +1,30 @@
+# custom_coating_5.yaml
+lr0: 0.01  # initial learning rate (SGD=1E-2, Adam=1E-3) -> from hyp.scratch
+lrf: 0.2  # final OneCycleLR learning rate (lr0 * lrf) -> from hyp.scratch
+momentum: 0.937  # SGD momentum/Adam beta1 -> from hyp.scratch
+weight_decay: 0.0005  # optimizer weight decay 5e-4 -> from hyp.scratch
+warmup_epochs: 3.0  # warmup epochs (fractions ok) -> from hyp.scratch
+warmup_momentum: 0.8  # warmup initial momentum -> from hyp.scratch
+warmup_bias_lr: 0.1  # warmup initial bias lr -> from hyp.scratch
+box: 0.05  # box loss gain -> from hyp.scratch
+cls: 0.5  # cls loss gain -> from hyp.scratch
+cls_pw: 1.0  # cls BCELoss positive_weight -> from hyp.scratch
+obj: 1.0  # obj loss gain (scale with pixels) -> from hyp.scratch
+obj_pw: 1.0  # obj BCELoss positive_weight -> from hyp.scratch
+iou_t: 0.20  # IoU training threshold -> from hyp.scratch
+anchor_t: 20.0  # anchor-multiple threshold -> from hyp.scratch
+fl_gamma: 0.0  # focal loss gamma (efficientDet default gamma=1.5) -> from hyp.scratch
+hsv_h: 0.0  # image HSV-Hue augmentation (fraction) -> from hyp.finetune
+hsv_s: 0.715  # image HSV-Saturation augmentation (fraction) -> from hyp.finetune
+hsv_v: 0.295  # image HSV-Value augmentation (fraction) -> from hyp.finetune
+degrees: 0.0  # image rotation (+/- deg) -> from hyp.finetune
+translate: 0.0536  # image translation (+/- fraction) -> from hyp.finetune
+scale: 0.827  # image scale (+/- gain) -> from hyp.finetune
+shear: 0.0  # image shear (+/- deg) -> from hyp.finetune
+perspective: 0.0  # image perspective (+/- fraction), range 0-0.001 -> from hyp.finetune
+flipud: 0.0  # image flip up-down (probability) -> from hyp.finetune
+fliplr: 0.367  # image flip left-right (probability) -> from hyp.finetune
+mosaic: 1.0  # image mosaic (probability) -> from hyp.finetune
+mixup: 0.0  # image mixup (probability) -> from hyp.finetune
+copy_paste: 0.0
+#anchors: 2.15

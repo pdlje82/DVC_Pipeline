@@ -1,0 +1,26 @@
+base:
+  random_state: 42
+
+data:
+  dataset_path: 'data/raw/Training_Yolov5_Dataset.zip'
+  images_path: 'data/extracted/images'
+  features_path: 'data/extracted/labels'
+  test_size: 0.3
+  trainset_path: 'data/...'
+  testset_path: 'data/...'
+
+
+model:
+  model_type: 'yolov5m'
+  model_config: 'config/custom_coating_5.yaml'
+
+train:
+  img: 128
+  batch-size: 64
+  epochs: 200
+
+
+
+reports:
+  metrics_file: 'reports/metrics.json'
+  confusion_matrix_image: 'reports/confusion_matrix.png'
