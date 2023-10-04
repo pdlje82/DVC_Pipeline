@@ -2,8 +2,8 @@
 
 ### 1. Clone this repository
 ```bash
-git clone https://github.com/___________.git
-cd _______
+git clone https://github.com/pdlje82/DVC_Pipeline.git
+cd DVC_Pipeline/
 ```
 
 ### 2. Create and activate virtual environment
