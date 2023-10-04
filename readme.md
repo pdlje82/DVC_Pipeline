@@ -7,12 +7,25 @@ cd DVC_Pipeline/
 ```
 
 ### 2. Create and activate virtual environment
-Create virtual environment named `dvc_pipeline`
+Create virtual environment named `venv_DVCpipeline` using conda (slow but less prone to crash)
+- installs into conda directory
 ```bash
-python3 -m venv dvc_pipeline
-echo "export PYTHONPATH=$PWD" >> dvc_pipeline-venv/bin/activate
-source dvc_pipeline-venv/bin/activate
+conda env create -f conda_env.yml --name venv_DVCpipeline -y
+conda activate venv_DVCpipeline
+````
+Or use python venv (fast but more prone to crash)
+- installs into project directory
+```bash
+python3 -m venv venv_DVCpipeline
+# Linux
+echo "export PYTHONPATH=$PWD" >> venv_DVCpipeline/bin/activate
+source venv_DVCpipeline/bin/activate
+
+# Windows
+echo "set PYTHONPATH=%cd%" >> venv_DVCpipeline\Scripts\activate.bat
+source venv_DVCpipeline/Scripts/activate
 ```
+
 
 Install python libraries
 ```bash

@@ -12,6 +12,7 @@ __pycache__/
 venv/
 env/
 .venv/
+*venv*
 
 # MLflow, W&B
 mlruns/
@@ -22,3 +23,6 @@ wandb/
 *.sqlite3
 *.zip
 old/
+
+# jupyter notebooks
+.ipynb*
