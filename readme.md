@@ -6,11 +6,32 @@ git clone https://github.com/pdlje82/DVC_Pipeline.git
 cd DVC_Pipeline/
 ```
 
-### 2. Create and activate virtual environment
-Create virtual environment named `venv_DVCpipeline` using conda (slow but less prone to crash)
-- installs into conda directory
+### 2. Install conda and mamba (==fast conda) (optional)
+- Download and install Miniforge
+- Linux
 ```bash
-conda env create -f conda_env.yml --name venv_DVCpipeline -y
+wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
+bash Miniforge3-Linux-x86_64.sh -b - p /workspace # set you install dir here
+echo 'export PATH="/workspace/miniforge3/bin:$PATH"' >> ~/.bashrc # adjust path according to your install
+```
+- Win 
+  - assumes you have git bash installed
+```bash
+curl -LO https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Windows-x86_64.exe
+start Miniforge3-Windows-x86_64.exe
+echo 'export PATH="/path/to/miniforge3/Scripts:$PATH"' >> ~/.bash_profile # adjust path according to your install
+conda init bash
+source ~/.bash_profile
+
+```
+### 3. Create and activate virtual environment
+Create virtual environment named `venv_DVCpipeline` using conda (slow but less prone to crash)
+- see bottom of this file how to install the via mamba (==fast conda)
+```bash
+conda env create -f conda_env.yml --name venv_DVCpipeline -y 
+# OR, if you installed miniforge
+mamba env create -f conda_env.yml --name venv_DVCpipeline
+# then
 conda activate venv_DVCpipeline
 ````
 Or use python venv (fast but more prone to crash)
@@ -44,14 +65,15 @@ jupyter contrib nbextension install --user
 jupyter nbextension enable toc2/main
 ```
 
-### 3. Clone the yolov5 model
+### 4. Clone the yolov5 model
 ```bash
 cd model/
 git clone https://github.com/ultralytics/yolov5
 cd yolov5/
 pip install -r requirements.txt
 ```
-### 4. Run Jupyter Notebook
+
+### 5. Run Jupyter Notebook
 ```bash
 jupyter notebook
 ```
