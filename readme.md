@@ -75,6 +75,7 @@ python -m ipykernel install --user --name=dvc_pipeline
 ```bash
 cd model/
 git clone https://github.com/ultralytics/yolov5
+git checkout tags/v7.0
 ```
 - requirements are already installed with the environment, if there are problems you could try `cd yolov5/` and `pip install -r requirements.txt`
 

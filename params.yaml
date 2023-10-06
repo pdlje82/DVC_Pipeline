@@ -1,8 +1,13 @@
 base:
   random_state: 42
+  log_level: 'DEBUG'
 
-data:
-  dataset_path: 'data/raw/Training_Yolov5_Dataset.zip'
+data_load:
+  dataset_url: 'https://file.io/ory5xt7bLL4h'                                             # download link, leave empty if no download necessary
+  dataset_raw_path: 'data/raw/'    # where to download to, and where to unzip from
+  data_is_zip: True                 # no quotes here!
+
+data_extract:
   images_path: 'data/extracted/images'
   features_path: 'data/extracted/labels'
   test_size: 0.3
