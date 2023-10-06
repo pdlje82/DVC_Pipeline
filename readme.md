@@ -1,4 +1,11 @@
+
 ## Preparation
+This script assumes that the installation is done on a host with a volume `\workspace`. 
+- Everything will be installed into this directory.
+- if you use a containerized environment like runpod.io, your permanent volume should have at least 40GB available space
+
+The next steps show how to install the environment. 
+- All pipeline components will be executed in the same environment
 
 ### 1. Clone this repository
 ```bash
@@ -10,8 +17,9 @@ cd DVC_Pipeline/
 - Download and install Miniforge
 - Linux
 ```bash
+cd /workspace
 wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
-bash Miniforge3-Linux-x86_64.sh -b - p /workspace # set you install dir here
+bash Miniforge3-Linux-x86_64.sh -b -p /workspace/miniforge3 # set you install dir here
 echo 'export PATH="/workspace/miniforge3/bin:$PATH"' >> ~/.bashrc # adjust path according to your install
 ```
 - Win 
@@ -19,12 +27,16 @@ echo 'export PATH="/workspace/miniforge3/bin:$PATH"' >> ~/.bashrc # adjust path 
 ```bash
 curl -LO https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Windows-x86_64.exe
 start Miniforge3-Windows-x86_64.exe
-echo 'export PATH="/path/to/miniforge3/Scripts:$PATH"' >> ~/.bash_profile # adjust path according to your install
+echo 'export PATH="/____/____/miniforge3/Scripts:$PATH"' >> ~/.bash_profile # adjust path according to your install
 conda init bash
 source ~/.bash_profile
 
 ```
-#### 2a.1 Create and activate virtual environment with conda
+### 3 Create and activate virtual environment 
+- ~ `4GB` download space
+- ~ `18GB` install space min.
+ 
+#### 3a Install with conda
 Create virtual environment named `venv_DVCpipeline` using conda (slow but less prone to crash)
 - see bottom of this file how to install the via mamba (==fast conda)
 ```bash
@@ -34,7 +46,7 @@ mamba env create -f conda_env.yml --name venv_DVCpipeline
 # then
 conda activate venv_DVCpipeline
 ````
-### 2b. (Alternative) Create and activate virtual environment with venv
+#### 3.b (Alternative) Install  with venv
 python venv (fast but more prone to crash)
 - installs into project directory
 ```bash
@@ -53,26 +65,26 @@ pip install --upgrade pip setuptools wheel
 pip install -r requirements.txt
 ```
 
-### 3. Add Virtual Environment to Jupyter Notebook
+### 4. Add Virtual Environment to Jupyter Notebook
+This step also enables the use of the pipeline environment in a preinstalled Jupiter Lab
 ```bash
 python -m ipykernel install --user --name=dvc_pipeline
-```
-### 4. (Optional) Configure ToC for jupyter notebook
-
-```bash
-jupyter contrib nbextension install --user
-jupyter nbextension enable toc2/main
 ```
 
 ### 5. Clone the yolov5 model
 ```bash
 cd model/
 git clone https://github.com/ultralytics/yolov5
-cd yolov5/
-pip install -r requirements.txt
 ```
+- requirements are already installed with the environment, if there are problems you could try `cd yolov5/` and `pip install -r requirements.txt`
 
 ### 6. Run Jupyter Notebook
+If a host like runpod.io is used:
+- do NOT execute jupyter from bash
+- make use of its integrated Jupyter notebook or Jupyter Lab environment. 
+- Connect to it, load the notebook and set the kernel to `dvc_pipeline`
+
 ```bash
-jupyter notebook
+jupyter notebook 
+
 ```
